@@ -12,6 +12,9 @@ $(document).ready(function () {
     $("h2").show();
     $('#footer').show();
   });
+  $("#debug").click(function(){
+    $("*").css("outline","1px solid black");
+  })
 });
 
 
