@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $(".images img").click(function(){
+  $("img").click(function(){
     $("#full-image").attr("src", $(this).attr("src"));
     $('#image-viewer').show();
     $("h2").hide();
