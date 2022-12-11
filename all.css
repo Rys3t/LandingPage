@@ -221,6 +221,10 @@ p{
     .itemLink{
         width: calc(50% - 14px);
     }
+        .background {
+            background-image: none;
+            background-color: black;
+        }
   }
   @media only screen and (max-width: 615px){
     .itemLink{
