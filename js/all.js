@@ -1,18 +1,18 @@
 $(document).ready(function () {
-  $("img").click(function(){
+  $("img").click(function () {
     $("#full-image").attr("src", $(this).attr("src"));
-    $('#image-viewer').show();
+    $("#image-viewer").show();
     $("h2").hide();
-    $('#footer').hide();
-    
+    $("#footer").hide();
   });
-  
-  $("#image-viewer .close").click(function(){
-    $('#image-viewer').hide();
+
+  $("#image-viewer .close").click(function () {
+    $("#image-viewer").hide();
     $("h2").show();
-    $('#footer').show();
+    $("#footer").show();
   });
 });
 
-
-
+document.getElementById("gamecard").onclick = (event) => {
+  event.stopPropagation();
+};
