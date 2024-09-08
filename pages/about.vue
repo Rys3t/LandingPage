@@ -9,10 +9,10 @@
     </div>
 
     <div class="flex flex-col">
-        <div class="container mx-auto py-20">
+        <div class="container py-20 mx-auto">
             <div
-                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
-            >
+                class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+                test
                 <!-- <ImageCard
                     src="https://live.staticflickr.com/65535/53159680140_ea118e6cc1_z.jpg"
                 /> -->

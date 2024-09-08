@@ -1,24 +1,28 @@
 <template>
-    <div
-        class="flex-col items-center justify-center w-4/5 h-full mx-auto select-none">
+    <!-- <SideBar /> -->
+    <main class="">
+        <!-- md:ml-72 -->
         <div
-            class="fixed inset-0 from-gray-500 to-gray-800 bg-gradient-to-b -z-50"></div>
-        <LogoSection />
+            class="flex-col items-center justify-center w-4/5 h-full mx-auto select-none">
+            <LogoSection />
 
-        <div
-            class="grid grid-cols-1 gap-2 p-2 rounded-lg md:grid-cols-2 xl:grid-cols-4 bg-white/80">
-            <Card
-                v-for="card in cards"
-                :key="card.title"
-                :title="card.title"
-                :imageUrl="card.imageUrl"
-                :website="card.website" />
+            <div
+                class="grid grid-cols-1 gap-2 p-2 mb-4 rounded-lg lg:grid-cols-2 xl:grid-cols-4 bg-white/80">
+                <Card
+                    v-for="card in cards"
+                    :key="card.title"
+                    :title="card.title"
+                    :imageUrl="card.imageUrl"
+                    :website="card.website" />
+            </div>
         </div>
-    </div>
+    </main>
+    <bg
+        class="fixed inset-0 from-gray-500 to-gray-800 bg-gradient-to-b -z-50"></bg>
 </template>
 
 <script setup>
-const cards = ref([
+const cards = reactive([
     {
         title: "Twitter",
         imageUrl: "/icon/twitter.png",
