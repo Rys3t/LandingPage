@@ -1,13 +1,14 @@
 <template>
     <main
-        class="relative p-6 transition duration-300 bg-white rounded-lg hover:cursor-pointer hover:bg-slate-300 scrollreveal"
+        class="relative p-6 transition duration-300 bg-white rounded-lg hover:cursor-pointer hover:bg-slate-400 group"
         @click="clickHandler(website)"
         @scroll="onScroll">
         <div class="flex items-center">
             <img :src="imageUrl" class="rounded-lg max-h-12" alt="Image" />
-            <h3 class="my-2 ml-3 text-lg font-bold text-gray-800">
+            <p
+                class="my-2 ml-3 text-lg font-bold text-gray-800 group-hover:text-white">
                 {{ title }}
-            </h3>
+            </p>
         </div>
     </main>
 </template>
@@ -38,3 +39,10 @@ const onScroll = ({target: {scrollTop, clientHeight, scrollHeight}}) => {
     }
 }
 </script>
+
+<style scoped>
+.filltest:hover,
+.filltest:focus {
+    box-shadow: inset 0 0 0 2em var(--hover);
+}
+</style>
