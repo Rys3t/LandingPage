@@ -25,10 +25,13 @@ const isFading = ref(false)
 
 const bios = ref([
     "📷 Hobbyist Photographer",
+    "🎵 Music Enthusiast",
     "🎮 Gamer",
+    "📚 Bookworm",
+    "🍜 Foodie",
     "💻 Software Engineer"
 ])
-const currentIndex = ref(0)
+const currentIndex = ref(-1)
 
 function getBio() {
     currentIndex.value = (currentIndex.value + 1) % bios.value.length
