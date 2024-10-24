@@ -14,5 +14,10 @@
         "nuxt": "^3.12.4",
         "scrollreveal": "^4.0.9",
         "vue": "latest"
+    },
+    "devDependencies": {
+        "nuxt-gtag": "^3.0.1",
+        "prettier": "^3.3.3",
+        "prettier-plugin-tailwindcss": "^0.6.8"
     }
 }
