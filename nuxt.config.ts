@@ -8,5 +8,8 @@ export default defineNuxtConfig({
             tailwindcss: {},
             autoprefixer: {}
         }
+    },
+    colorMode: {
+        preference: "light",
     }
 })

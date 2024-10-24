@@ -17,8 +17,8 @@
             </div>
         </div>
     </main>
-    <bg
-        class="fixed inset-0 from-gray-500 to-gray-800 bg-gradient-to-b -z-50"></bg>
+    <div
+        class="fixed inset-0 from-gray-500 to-gray-800 bg-gradient-to-b -z-50"></div>
 </template>
 
 <script setup>

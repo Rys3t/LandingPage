@@ -10,12 +10,9 @@
         "postinstall": "nuxt prepare"
     },
     "dependencies": {
+        "@nuxt/ui": "^2.18.7",
         "nuxt": "^3.12.4",
         "scrollreveal": "^4.0.9",
         "vue": "latest"
-    },
-    "devDependencies": {
-        "@nuxtjs/color-mode": "^3.4.4",
-        "@nuxtjs/tailwindcss": "^6.12.1"
     }
 }
