@@ -27,9 +27,24 @@ const cards = reactive([
     website: "https://x.com/Rys3t_",
   },
   {
+    title: "Flickr",
+    imageUrl: "/icon/Flickr.png",
+    website: "https://www.flickr.com/photos/195565798@N06/",
+  },
+  {
+    title: "Instagram",
+    imageUrl: "/icon/instagram.png",
+    website: "https://www.instagram.com/rys3t_/",
+  },
+  {
     title: "Youtube",
     imageUrl: "/icon/youtube.png",
     website: "https://www.youtube.com/@Rys3t_",
+  },
+  {
+    title: "Facebook",
+    imageUrl: "/icon/facebook.png",
+    website: "https://www.facebook.com/Rys3t/",
   },
   {
     title: "Github",
@@ -42,19 +57,9 @@ const cards = reactive([
     website: "https://steamcommunity.com/id/Rys3t_/",
   },
   {
-    title: "Facebook",
-    imageUrl: "/icon/facebook.png",
-    website: "https://www.facebook.com/ryu.tactival/",
-  },
-  {
     title: "SoundCloud",
     imageUrl: "/icon/soundcloud.png",
     website: "https://soundcloud.com/rys3t",
-  },
-  {
-    title: "Instagram",
-    imageUrl: "/icon/instagram.png",
-    website: "https://www.instagram.com/rys3t_/",
   },
 ]);
 definePageMeta({
