@@ -22,6 +22,11 @@ export const useSocials = () => {
             website: "https://www.instagram.com/rys3t_/",
         },
         {
+            title: "Threads",
+            imageUrl: "/icon/threads.png",
+            website: "https://www.threads.net/@Rys3t_",
+        },
+        {
             title: "Youtube",
             imageUrl: "/icon/youtube.png",
             website: "https://www.youtube.com/@Rys3t_",
@@ -41,16 +46,7 @@ export const useSocials = () => {
             imageUrl: "/icon/steam.png",
             website: "https://steamcommunity.com/id/Rys3t_/",
         },
-        {
-            title: "SoundCloud",
-            imageUrl: "/icon/soundcloud.png",
-            website: "https://soundcloud.com/rys3t",
-        },
-        {
-            title: "Threads",
-            imageUrl: "/icon/threads.png",
-            website: "https://www.threads.net/@Rys3t_",
-        },
+
     ]);
 
     return {
