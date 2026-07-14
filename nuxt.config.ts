@@ -10,10 +10,10 @@ export default defineNuxtConfig({
     },
   },
   colorMode: {
-    preference: "light",
+    preference: "dark",
   },
   gtag: {
     id: "G-H6P1897Y2J",
-    debug: true,
+    debug: process.env.NODE_ENV !== "production",
   },
 });
