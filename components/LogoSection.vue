@@ -1,11 +1,17 @@
 <template>
-  <div class="mb-6 w-full rounded-lg bg-white bg-opacity-80 py-4 shadow-lg dark:bg-gray-800 dark:bg-opacity-80 transition-colors">
-    <img class="mx-auto h-24 w-24 rounded-full" id="logo" src="/public/icon/logo.png" />
-    <p class="py-2 text-center font-mono text-2xl font-semibold dark:text-white">Rys3t_</p>
+  <div
+    class="mb-6 w-full rounded-3xl border border-black/10 bg-white/30 py-6 shadow-2xl shadow-black/10 backdrop-blur-2xl transition-colors duration-500 dark:border-white/10 dark:bg-white/5 dark:shadow-black/40"
+  >
+    <img
+      class="mx-auto h-24 w-24 rounded-full border border-black/10 object-cover shadow-lg dark:border-white/20"
+      id="logo"
+      src="/icon/logo.png"
+    />
+    <p class="py-2 text-center font-mono text-2xl font-semibold text-slate-800 dark:text-white">Rys3t_</p>
 
     <div class="flex items-center justify-center">
       <p
-        class="py-2 text-center font-mono text-black transition-opacity duration-100 dark:text-gray-300"
+        class="py-2 text-center font-mono text-slate-600 transition-opacity duration-100 dark:text-gray-300"
         :class="{ 'opacity-0': isFading }"
       >
         {{ bio }}
