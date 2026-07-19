@@ -1,5 +1,5 @@
 <template>
-  <footer class="mt-8 w-full py-6 text-center text-slate-600 dark:text-white/60">
+  <footer class="mt-8 w-full py-6 text-center text-slate-600">
     <p class="font-mono text-sm">
       &copy; {{ new Date().getFullYear() }} Rys3t. All rights reserved.
     </p>

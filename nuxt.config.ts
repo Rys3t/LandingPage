@@ -2,18 +2,20 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/color-mode", "nuxt-gtag"],
+  modules: ["@nuxtjs/tailwindcss", "nuxt-gtag"],
+  app: {
+    head: {
+      htmlAttrs: { lang: "en" },
+    },
+  },
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
-  colorMode: {
-    preference: "dark",
-  },
   gtag: {
+    enabled: process.env.NODE_ENV === "production",
     id: "G-H6P1897Y2J",
-    debug: process.env.NODE_ENV !== "production",
   },
 });
