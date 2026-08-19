@@ -7,6 +7,11 @@ export interface SocialCard {
 export const useSocials = () => {
     const cards = ref<SocialCard[]>([
         {
+            title: "Photography",
+            imageUrl: "/icon/camera.svg",
+            website: "https://rys3t-portfolio.vercel.app/",
+        },
+        {
             title: "Twitter",
             imageUrl: "/icon/twitter.png",
             website: "https://x.com/Rys3t_",
@@ -46,7 +51,6 @@ export const useSocials = () => {
             imageUrl: "/icon/steam.png",
             website: "https://steamcommunity.com/id/Rys3t_/",
         },
-
     ]);
 
     return {
