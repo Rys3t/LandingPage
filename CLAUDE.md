@@ -2,35 +2,27 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Project overview
-
-A Nuxt 3 personal landing page ("Rys3t's Landing Page") that displays a profile card with a rotating bio and a grid of social media links. Originally migrated from a static landing page to Nuxt 3 (see README.md).
-
 ## Commands
 
-This project uses **pnpm** (pinned via `packageManager` in `package.json`), not npm/yarn.
+- `pnpm run dev` — Vite dev server(內附 demo 資料可直接跑,不需 Cloudinary 憑證)
+- `pnpm run fetch:gallery` — 從 Cloudinary Search API 撈取資產,重新產生 `src/data/gallery.json`(需 `.env`,見 `.env.example`)
+- `pnpm run build` — 只打包前端(用現有的 gallery.json)
+- `pnpm run build:full` — fetch:gallery + build(部署時用)
 
-- `pnpm dev` — start the dev server (Nuxt dev, with devtools enabled)
-- `pnpm build` — production build
-- `pnpm generate` — static site generation
-- `pnpm preview` — preview a production build locally
-- `pnpm install` triggers `postinstall` → `nuxt prepare` (regenerates `.nuxt/`)
-- Build scripts for native/postinstall packages (`esbuild`, `@parcel/watcher`) are explicitly allow-listed in `pnpm-workspace.yaml` under `allowBuilds` — pnpm blocks arbitrary postinstall scripts by default, so new deps with build scripts will need approval there (`pnpm approve-builds`) before `pnpm install` succeeds.
-
-There is no lint or test script configured in `package.json` — there is no test suite in this repo.
-
-Formatting is via Prettier (`prettier-plugin-tailwindcss` for class sorting), config in `.prettierrc.json` (printWidth 120). Run via `npx prettier --write .` if needed; no script is wired up.
+沒有測試與 lint 設定。
 
 ## Architecture
 
-- **Nuxt 3** with the `@nuxtjs/tailwindcss` module, plus `nuxt-gtag` for Google Analytics (tracking ID hardcoded in `nuxt.config.ts`). No `@nuxt/ui` and no dark mode — the page is light-only with a solid off-white background (`#f5f0e4`, set in `pages/index.vue`).
-- File-based routing under `pages/`: `index.vue` is the real landing page; `about.vue` is unused scaffold boilerplate from `nuxt create`.
-- `app.vue` is just a `<NuxtPage />` shell.
-- **Data-driven cards**: the composable `composables/useSocials.ts` exports `useSocials()`, returning a reactive `cards` array (`SocialCard[]`: title, imageUrl, website). `pages/index.vue` loops over this to render `Card` components — to add/remove a social link, edit this composable rather than the page template.
-- **Components**:
-  - `LogoSection.vue` — profile picture + auto-rotating bio text (interval-based fade transition, no external state).
-  - `Card.vue` — a single social link tile, rendered as an `<a target="_blank" rel="noopener noreferrer">`.
-  - `Footer.vue` — static footer.
-  - `SideBar.vue` — drawer-style sidebar nav; not referenced anywhere, inactive.
-- Icons/images for social links live in `public/icon/`; reference them as `/icon/<name>.png`.
-- No server API routes are in active use (`server/` only has a `tsconfig.json`).
+兩階段架構,資料流單向:**build-time script → 靜態 JSON → 前端**。
+
+1. **Build 階段**:`scripts/fetch-gallery.mjs`(Node,唯一使用 API Secret 的地方)呼叫 Cloudinary Search API,查 `asset_folder:{GALLERY_ROOT_FOLDER}/*` 下所有圖片,連同 tags 與 contextual metadata 轉成最小欄位,加上 series/tags 統計,寫入 `src/data/gallery.json`。
+2. **前端(Vue 3 + Vite,純靜態)**:直接 import `gallery.json`,不呼叫任何 API。圖片不在專案中——`src/lib/cld.js` 用 `publicId` 組出 Cloudinary delivery URL(`f_auto,q_auto,c_limit,w_{width}`),由 CDN 即時轉檔。所有圖片 URL 一律經過 `cldUrl()`/`cldSrcset()` 產生,不要手寫 URL。
+
+元件:`App.vue` 持有篩選狀態(series 單選、tags 複選 AND),把篩選後的 items 傳給 `MasonryGallery`(瀑布流)與 `Lightbox`;`Sidebar` 只發事件不持狀態。
+
+## 約定
+
+- **Demo 模式**:item 帶 `demoSeed` 欄位時,`cld.js` 改用 picsum 佔位圖——這是 repo 內附 gallery.json 開箱可跑的機制,改 `cld.js` 時要保留。
+- Cloudinary 資料夾結構即前端分類:`portfolio/` 子資料夾名稱 = 系列;資產 tags = 標籤;contextual metadata `title`/`caption` = 標題、`alt`/`description` = 說明。
+- API Secret 絕不進前端 bundle;前端只用公開 delivery URL。
+- 換撈取根資料夾:改 `.env` 的 `GALLERY_ROOT_FOLDER`(預設 `portfolio`)。

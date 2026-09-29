@@ -1,0 +1,21 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "pnpm run build",
+  "outputDirectory": "dist",
+  "functions": {
+    "api/gallery.js": {
+      "maxDuration": 30,
+      "includeFiles": "src/assets/Rys3t_logo.svg"
+    },
+    "api/image.js": {
+      "maxDuration": 60,
+      "includeFiles": "src/assets/Rys3t_logo.svg"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/images/:path*",
+      "destination": "https://res.cloudinary.com/dlpbd4zfb/image/upload/:path*"
+    }
+  ]
+}
