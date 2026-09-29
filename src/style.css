@@ -1,0 +1,128 @@
+:root {
+  color-scheme: dark;
+  --surface-rgb: 18, 20, 23;
+  --contrast-rgb: 255, 255, 255;
+  --accent-rgb: 215, 179, 107;
+  --loader-rgb: 43, 43, 43;
+  --lightbox-bg: rgba(8, 9, 11, 0.94);
+  --logo-filter: none;
+  /* 暗房調色:深墨背景讓照片自己發光,黃銅色作為安全燈式的單一強調色 */
+  --bg: #121417;
+  --panel: #17191d;
+  --line: #272b30;
+  --text: #e9e7e2;
+  --muted: #8b8f94;
+  --accent: #d7b36b;
+
+  --font-display: "Noto Sans TC", system-ui, sans-serif;
+  --font-body: "Noto Sans TC", system-ui, sans-serif;
+  --font-mono: "Noto Sans TC", system-ui, sans-serif;
+
+  --sidebar-w: 264px;
+  --header-h: 60px;
+
+  /* 保持低存在感的深色捲動條；thumb 周圍的透明邊界讓它有懸浮感。 */
+  --scroll-track: transparent;
+  --scroll-thumb: rgba(139, 143, 148, 0.46);
+  --scroll-thumb-hover: rgba(215, 179, 107, 0.82);
+}
+
+/* Swiss-inspired paper, ink and restrained vermilion; geometry stays shared. */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #faf9f6;
+  --panel: #ffffff;
+  --line: #d6d4cf;
+  --text: #191919;
+  --muted: #62615e;
+  --accent: #bd2b20;
+  --surface-rgb: 250, 249, 246;
+  --contrast-rgb: 25, 25, 25;
+  --accent-rgb: 189, 43, 32;
+  --loader-rgb: 214, 214, 214;
+  --lightbox-bg: rgba(250, 249, 246, 0.97);
+  --logo-filter: brightness(0);
+  --scroll-thumb: rgba(98, 97, 94, 0.46);
+  --scroll-thumb-hover: rgba(189, 43, 32, 0.72);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Firefox：以標準屬性維持可存取、低對比但清楚可見的捲動軸。 */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-thumb) var(--scroll-track);
+}
+
+/* Chromium / Safari：預設頁面捲動條。 */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scroll-track);
+}
+
+::-webkit-scrollbar-thumb {
+  min-height: 44px;
+  border: 4px solid transparent;
+  border-radius: 999px;
+  background: var(--scroll-thumb);
+  background-clip: padding-box;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scroll-thumb-hover);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
